@@ -6,8 +6,9 @@
 type Pose2DPoint2DBearingRangeDensity <: IncrementalInference.FunctorPairwise
     bearing::BallTreeDensity
     range::BallTreeDensity
+    nullhypothesis::Distributions.Categorical
     Pose2DPoint2DBearingRangeDensity() = new()
-    Pose2DPoint2DBearingRangeDensity(x1::BallTreeDensity,x2::BallTreeDensity) = new(x1,x2)
+    Pose2DPoint2DBearingRangeDensity(x1::BallTreeDensity,x2::BallTreeDensity; nh::Vector{Float64}=[0.0;1.0]) = new(x1,x2, Categorical(nh))
 end
 function getSample(pp2br::Pose2DPoint2DBearingRangeDensity, N::Int=1)
   b = KernelDensityEstimate.sample(pp2br.bearing, N)[1]
