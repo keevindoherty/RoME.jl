@@ -116,7 +116,7 @@ end
 
 function getNextLbl(fgl::FactorGraph, chr)
   # TODO convert this to use a double lookup
-  warn("getNextLbl(::FactorGraph..) to be deprecated, use getlastpose/landm(::SLAMWrapper..) instead.")
+  # warn("getNextLbl(::FactorGraph..) to be deprecated, use getlastpose/landm(::SLAMWrapper..) instead.")
   max = -1
   maxid = -1
   for vid in fgl.IDs
